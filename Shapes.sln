@@ -3,9 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7FC73885-4448-4888-A7E6-5FDF0177610A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B0A3DA04-A37D-41E2-B4E4-08763B1E9958}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes.AreaCalculator", "src\Shapes.AreaCalculator\Shapes.AreaCalculator.csproj", "{31C68E9F-2937-4E33-876A-D2135B33E98C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes.AreaCalculator.Tests", "tests\Shapes.AreaCalculator.Tests\Shapes.AreaCalculator.Tests.csproj", "{A70E3E5F-C126-4405-9461-055AC9D523C5}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31C68E9F-2937-4E33-876A-D2135B33E98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31C68E9F-2937-4E33-876A-D2135B33E98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31C68E9F-2937-4E33-876A-D2135B33E98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31C68E9F-2937-4E33-876A-D2135B33E98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A70E3E5F-C126-4405-9461-055AC9D523C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A70E3E5F-C126-4405-9461-055AC9D523C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A70E3E5F-C126-4405-9461-055AC9D523C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A70E3E5F-C126-4405-9461-055AC9D523C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31C68E9F-2937-4E33-876A-D2135B33E98C} = {7FC73885-4448-4888-A7E6-5FDF0177610A}
+		{A70E3E5F-C126-4405-9461-055AC9D523C5} = {B0A3DA04-A37D-41E2-B4E4-08763B1E9958}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96DEC2DF-ACC9-4EB6-8278-4CF7960DCDFC}
