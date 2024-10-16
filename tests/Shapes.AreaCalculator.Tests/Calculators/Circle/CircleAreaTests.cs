@@ -1,5 +1,4 @@
-﻿using Shapes.AreaCalculator.Exceptions;
-using Shapes.AreaCalculator.Requests.Circle;
+﻿using Shapes.AreaCalculator.Requests.Circle;
 
 namespace Shapes.AreaCalculator.Tests.Calculators.Circle;
 
@@ -12,12 +11,14 @@ public class CircleAreaTests
     /// <summary>
     /// Тест вычисления площади круга при валидном радиусе
     /// </summary>
-    [Fact]
-    public void CircleArea_ByRadius_Valid()
+    [Theory]
+    [InlineData(0, 0)]
+    [InlineData(1, 3.1)]
+    [InlineData(2.1, 13.9)]
+    public void CircleArea_ByRadius_Valid(double radius, double expected)
     {
         // Arrange
-        var request = new CircleAreaByRadiusRequest(2.1);
-        var expected = Math.Round(13.8544, 1); // PI = 3.1415926535
+        var request = new CircleAreaByRadiusRequest(radius);        
 
         // Act
         var result = _area.Calculate(request);
@@ -45,16 +46,12 @@ public class CircleAreaTests
     /// Тест вычисления площади круга при нулевом радиусе
     /// </summary>
     [Fact]
-    public void CircleArea_ByRadius_Zero()
+    public void CircleArea_ByRadius_Null()
     {
         // Arrange
-        var request = new CircleAreaByRadiusRequest(0);
-        var expected = 0;
+        CircleAreaByRadiusRequest request = null!;
 
-        // Act
-        var result = _area.Calculate(request);
-
-        // Assert
-        Assert.Equal(expected, result);
+        // Act & Assert
+        Assert.Throws<ShapeException>(() => _area.Calculate(request));
     }
 }

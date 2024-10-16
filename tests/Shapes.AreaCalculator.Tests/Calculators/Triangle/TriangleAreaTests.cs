@@ -1,5 +1,4 @@
-﻿using Shapes.AreaCalculator.Exceptions;
-using Shapes.AreaCalculator.Requests.Triangle;
+﻿using Shapes.AreaCalculator.Requests.Triangle;
 
 namespace Shapes.AreaCalculator.Tests.Calculators.Triangle;
 
@@ -12,18 +11,20 @@ public class TriangleAreaTests
     /// <summary>
     /// Тест вычисления площади треугольника по трём сторона при валидной передаче аргументов
     /// </summary>
-    [Fact]
-    public void TriangleArea_ByThreeSides_Valid()
+    [Theory]
+    [InlineData(3, 4, 5, 6)]
+    [InlineData(5, 6, 10, 11.4)]
+    [InlineData(7.2, 6.3, 13.4, 5.5)]
+    public void TriangleArea_ByThreeSides_Valid(double firstSide, double secondSide, double thirdSide, double expected)
     {
         // Arrange
-        var request = new TriangleAreaByThreeSidesRequest(3, 4, 5);
-        var expected = 6;
+        var request = new TriangleAreaByThreeSidesRequest(firstSide, secondSide, thirdSide);        
 
         // Act
         var result = _area.Calculate(request);
 
         // Assert
-        Assert.Equal(expected, result);
+        Assert.Equal(expected, Math.Round(result, 1));
     }
 
     /// <summary>
@@ -48,5 +49,18 @@ public class TriangleAreaTests
 
         // Act & Assert
         Assert.Throws<ShapeException>(() => _area.Calculate(request));        
+    }
+
+    /// <summary>
+    /// Тест вычисления площади треугольника по трем сторонам, при передаче null запроса
+    /// </summary>
+    [Fact]
+    public void TriangleArea_ByThreeSides_Null()
+    {
+        // Arrange
+        TriangleAreaByThreeSidesRequest request = null!;
+
+        // Act & Assert
+        Assert.Throws<ShapeException>(() => _area.Calculate(request));
     }
 }
