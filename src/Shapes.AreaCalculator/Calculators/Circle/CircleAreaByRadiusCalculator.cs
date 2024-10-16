@@ -1,4 +1,5 @@
 ﻿using Shapes.AreaCalculator.Requests.Circle;
+using Shapes.AreaCalculator.Validators;
 
 namespace Shapes.AreaCalculator.Calculators.Circle;
 
@@ -7,9 +8,13 @@ namespace Shapes.AreaCalculator.Calculators.Circle;
 /// </summary>
 internal class CircleAreaByRadiusCalculator : IAreaCalculator<CircleAreaByRadiusRequest>
 {
+    private readonly IRequestValidator<CircleAreaByRadiusRequest> _validator;
+
+    public CircleAreaByRadiusCalculator(IRequestValidator<CircleAreaByRadiusRequest> validator) => _validator = validator;
+
     public double Calculate(CircleAreaByRadiusRequest request)
     {
-        // TODO: validator
+        _validator.ThrowIfInvalid(request);
 
         return Math.PI * request.Radius * request.Radius;
     }
