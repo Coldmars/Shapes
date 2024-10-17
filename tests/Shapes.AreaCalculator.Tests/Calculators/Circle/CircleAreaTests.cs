@@ -18,13 +18,13 @@ public class CircleAreaTests
     public void CircleArea_ByRadius_Valid(double radius, double expected)
     {
         // Arrange
-        var request = new CircleAreaByRadiusRequest(radius);        
+        var request = new CircleAreaByRadiusRequest(radius);
 
         // Act
         var result = _area.Calculate(request);
 
         // Assert
-        Assert.Equal(expected, Math.Round(result, 1));
+        Assert.Equal(expected, result, 1);
     }
 
     /// <summary>

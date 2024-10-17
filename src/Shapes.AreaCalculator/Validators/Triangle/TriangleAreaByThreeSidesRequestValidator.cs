@@ -10,11 +10,6 @@ internal class TriangleAreaByThreeSidesRequestValidator : IRequestValidator<Tria
         if (request == null)
             throw new ShapeException("Request object must not be null.");
 
-        if (request.FirstSide <= 0 ||
-            request.SecondSide <= 0 ||
-            request.ThirdSide <= 0)
-            throw new ShapeException("One or more sides of triangle must be greater than zero.");
-
         if (request.FirstSide + request.SecondSide < request.ThirdSide ||
             request.SecondSide + request.ThirdSide < request.FirstSide ||
             request.ThirdSide + request.FirstSide < request.SecondSide)

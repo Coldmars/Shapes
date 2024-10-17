@@ -12,6 +12,7 @@ public class TriangleAreaTests
     /// Тест вычисления площади треугольника по трём сторона при валидной передаче аргументов
     /// </summary>
     [Theory]
+    [InlineData(0, 0, 0, 0)]
     [InlineData(3, 4, 5, 6)]
     [InlineData(5, 6, 10, 11.4)]
     [InlineData(7.2, 6.3, 13.4, 5.5)]
@@ -24,14 +25,13 @@ public class TriangleAreaTests
         var result = _area.Calculate(request);
 
         // Assert
-        Assert.Equal(expected, Math.Round(result, 1));
+        Assert.Equal(expected, result, 1);
     }
 
     /// <summary>
     /// Тест вычисления площади треугольника по трём сторона при не валидной передаче аргументов
     /// </summary>
     [Theory]
-    [InlineData(0, 0, 0)]
     [InlineData(0, 4, 5)]
     [InlineData(3, 0, 5)]
     [InlineData(3, 4, 0)]    
